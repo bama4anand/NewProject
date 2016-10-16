@@ -1,5 +1,5 @@
 ---
-title: "RollingHousingSales"
+title: "RollingHousingsales"
 author: "Bama Parthasarathy"
 date: "October 16, 2016"
 output: html_document
@@ -70,5 +70,3 @@ summary(bk.homes[which(bk.homes$sale.price.n<100000),])
 bk.homes$outliers <- (log10(bk.homes$sale.price.n) <=5) + 0
 bk.homes <- bk.homes[which(bk.homes$outliers==0),]
 plot(log10(bk.homes$gross.sqft),log10(bk.homes$sale.price.n))
-
-
