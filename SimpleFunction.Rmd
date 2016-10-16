@@ -1,0 +1,17 @@
+---
+title: "SimpleFunction"
+author: "Bama Parthasarathy"
+date: "October 15, 2016"
+output: 
+html_document:
+keep_md: true
+---
+##Define two rnorm samples of differing sample sizes
+
+
+```{r}
+se <- function(x) {
+  sd(x)/length(x)
+}
+
+
