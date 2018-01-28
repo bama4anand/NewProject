@@ -1,0 +1,2110 @@
+﻿  Data Mining Project 1- BamaFile1-Copy1       // MathJax disabled, set as null 
+to distingish from *missing* MathJax, // where it will be undefined, and should 
+prompt a dialog later. window.mathjax_url = 
+"/static/components/MathJax/MathJax.js";             require.config({ urlArgs: 
+"v=20180124102307", baseUrl: '/static/', paths: { 'auth/js/main': 
+'auth/js/main.min', custom : '/custom', nbextensions : '/nbextensions', 
+kernelspecs : '/kernelspecs', underscore : 
+'components/underscore/underscore-min', backbone : 
+'components/backbone/backbone-min', jquery: 'components/jquery/jquery.min', 
+bootstrap: 'components/bootstrap/js/bootstrap.min', bootstraptour: 
+'components/bootstrap-tour/build/js/bootstrap-tour.min', 'jquery-ui': 
+'components/jquery-ui/ui/minified/jquery-ui.min', moment: 
+'components/moment/moment', codemirror: 'components/codemirror', termjs: 
+'components/xterm.js/dist/xterm', typeahead: 
+'components/jquery-typeahead/dist/jquery.typeahead.min', }, map: { // for 
+backward compatibility "*": { "jqueryui": "jquery-ui", } }, shim: { typeahead: { 
+deps: ["jquery"], exports: "typeahead" }, underscore: { exports: '_' }, 
+backbone: { deps: ["underscore", "jquery"], exports: "Backbone" }, bootstrap: { 
+deps: ["jquery"], exports: "bootstrap" }, bootstraptour: { deps: ["bootstrap"], 
+exports: "Tour" }, "jquery-ui": { deps: ["jquery"], exports: "$" } }, 
+waitSeconds: 30, }); require.config({ map: { '*':{ 'contents': 
+'services/contents', } } }); // error-catching custom.js shim. define("custom", 
+function (require, exports, module) { try { var custom = 
+require('custom/custom'); console.debug('loaded custom.js'); return custom; } 
+catch (e) { console.error("error loading custom.js", e); return {}; } })  
+.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; 
+-moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px 
+#83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; 
+-khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; 
+display: inline-block; position: absolute} .MathJax_Menu_Button 
+.MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: 
+inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 
+4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier 
+New',Courier; font-size: 9px; color: #F0F0F0} .MathJax_Menu_Button 
+.MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px 
+solid; border-radius: 3px; line-height: 0; padding: 4px}
+ .MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid 
+#CCC!important} .MathJax_Hover_Arrow:hover span {background-color: 
+#CCC!important} #MathJax_About {position: fixed; left: 50%; width: auto; 
+text-align: center; border: 3px outset; padding: 1em 2em; background-color: 
+#DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 
+120%; font-style: normal; text-indent: 0; text-transform: none; line-height: 
+normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; 
+white-space: nowrap; float: none; z-index: 201; border-radius: 15px; 
+-webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 
+15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px 
+#808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 
+20px #808080} #MathJax_About.MathJax_MousePost {outline: none} .MathJax_Menu 
+{position: absolute; background-color: white; color: black; width: auto; 
+padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; 
+text-align: left; text-indent: 0; text-transform: none; line-height: normal; 
+letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: 
+nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; 
+-webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px 
+#808080; -khtml-box-shadow: 0px 10px 20px #808080} .MathJax_MenuItem {padding: 
+2px 2em; background: transparent} .MathJax_MenuArrow {position: absolute; right: 
+.5em; padding-top: .25em; color: #666666; font-family: 'Arial unicode MS'; 
+font-size: .75em} .MathJax_MenuActive .MathJax_MenuArrow {color: white}
+ .MathJax_MenuArrow.RTL {left: .5em; right: auto} .MathJax_MenuCheck {position: 
+absolute; left: .7em; font-family: 'Arial unicode MS'} .MathJax_MenuCheck.RTL 
+{right: .7em; left: auto} .MathJax_MenuRadioCheck {position: absolute; left: 
+1em} .MathJax_MenuRadioCheck.RTL {right: 1em; left: auto} .MathJax_MenuLabel 
+{padding: 2px 2em 4px 1.33em; font-style: italic} .MathJax_MenuRule {border-top: 
+1px solid #CCCCCC; margin: 4px 1px 0px} .MathJax_MenuDisabled {color: GrayText}
+ .MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+ .MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: 
+#E8E8E8} .MathJax_ContextMenu:focus {outline: none} .MathJax_ContextMenu 
+.MathJax_MenuItem:focus {outline: none} #MathJax_AboutClose {top: .2em; right: 
+.2em} .MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+ .MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; 
+border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; 
+-moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier 
+New',Courier; font-size: 24px; color: #F0F0F0} .MathJax_MenuClose span {display: 
+block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; 
+-webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 
+18px; line-height: 0; padding: 8px 0 6px} .MathJax_MenuClose:hover {color: 
+white!important; border: 2px solid #CCC!important} .MathJax_MenuClose:hover span 
+{background-color: #CCC!important} .MathJax_MenuClose:hover:focus {outline: 
+none} .MathJax_Preview .MJXf-math {color: inherit!important} 
+.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: 
+rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; 
+height: 1px!important; width: 1px!important; overflow: hidden!important; 
+display: block!important} .MJX_Assistive_MathML.MJX_Assistive_MathML_Block 
+{width: 100%!important} #MathJax_Zoom {position: absolute; background-color: 
+#F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 
+1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: 
+left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: 
+normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: 
+none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: 
+content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px 
+#AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px 
+#AAAAAA} #MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 
+300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; 
+margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+ #MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; 
+width: 0} #MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 
+302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: 
+white; opacity: 0; filter: alpha(opacity=0)} .MathJax_Preview {color: #888}
+ #MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: 
+#E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; 
+color: black; font-size: 80%; width: auto; white-space: nowrap}
+ #MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 
+101; border: 0px; margin: 0px; padding: 0px} .MathJax_Error {color: #CC0000; 
+font-style: italic} div.MathJax_MathML {text-align: center; margin: .75em 0px; 
+display: block!important} .MathJax_MathML {font-style: normal; font-weight: 
+normal; line-height: normal; font-size: 100%; font-size-adjust: none; 
+text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; 
+word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; 
+direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; 
+border: 0; padding: 0; margin: 0} span.MathJax_MathML {display: 
+inline!important} .MathJax_mmlExBox {display: block!important; overflow: hidden; 
+height: 1px; width: 60ex; min-height: 0; max-height: none; padding: 0; border: 
+0; margin: 0} .MJXp-script {font-size: .8em} .MJXp-right 
+{-webkit-transform-origin: right; -moz-transform-origin: right; 
+-ms-transform-origin: right; -o-transform-origin: right; transform-origin: 
+right} .MJXp-bold {font-weight: bold} .MJXp-italic {font-style: italic}
+ .MJXp-scr {font-family: MathJax_Script,'Times New 
+Roman',Times,STIXGeneral,serif} .MJXp-frak {font-family: MathJax_Fraktur,'Times 
+New Roman',Times,STIXGeneral,serif} .MJXp-sf {font-family: 
+MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif} .MJXp-cal 
+{font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+ .MJXp-mono {font-family: MathJax_Typewriter,'Times New 
+Roman',Times,STIXGeneral,serif} .MJXp-largeop {font-size: 150%}
+ .MJXp-largeop.MJXp-int {vertical-align: -.2em} .MJXp-math {display: 
+inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New 
+Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+ .MJXp-display {display: block; text-align: center; margin: 1em 0} .MJXp-math 
+span {display: inline-block} .MJXp-box {display: block!important; text-align: 
+center} .MJXp-box:after {content: " "} .MJXp-rule {display: block!important; 
+margin-top: .1em} .MJXp-char {display: block!important} .MJXp-mo {margin: 0 
+.15em} .MJXp-mfrac {margin: 0 .125em; vertical-align: .25em} .MJXp-denom 
+{display: inline-table!important; width: 100%} .MJXp-denom > * {display: 
+table-row!important} .MJXp-surd {vertical-align: top} .MJXp-surd > * {display: 
+block!important} .MJXp-script-box > * {display: table!important; height: 50%}
+ .MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+ .MJXp-script-box > *:last-child > * {vertical-align: bottom} .MJXp-script-box > 
+* > * > * {display: block!important} .MJXp-mphantom {visibility: hidden}
+ .MJXp-munderover {display: inline-table!important} .MJXp-over {display: 
+inline-block!important; text-align: center} .MJXp-over > * {display: 
+block!important} .MJXp-munderover > * {display: table-row!important}
+ .MJXp-mtable {vertical-align: .25em; margin: 0 .125em} .MJXp-mtable > * 
+{display: inline-table!important; vertical-align: middle} .MJXp-mtr {display: 
+table-row!important} .MJXp-mtd {display: table-cell!important; text-align: 
+center; padding: .5em 0 0 .5em} .MJXp-mtr > .MJXp-mtd:first-child {padding-left: 
+0} .MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0} .MJXp-mlabeledtr {display: 
+table-row!important} .MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+ .MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0} .MJXp-merror 
+{background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 
+1px 3px; font-style: normal; font-size: 90%} .MJXp-scale0 {-webkit-transform: 
+scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: 
+scaleX(.0); transform: scaleX(.0)} .MJXp-scale1 {-webkit-transform: scaleX(.1); 
+-moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); 
+transform: scaleX(.1)} .MJXp-scale2 {-webkit-transform: scaleX(.2); 
+-moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); 
+transform: scaleX(.2)} .MJXp-scale3 {-webkit-transform: scaleX(.3); 
+-moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); 
+transform: scaleX(.3)} .MJXp-scale4 {-webkit-transform: scaleX(.4); 
+-moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); 
+transform: scaleX(.4)} .MJXp-scale5 {-webkit-transform: scaleX(.5); 
+-moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); 
+transform: scaleX(.5)} .MJXp-scale6 {-webkit-transform: scaleX(.6); 
+-moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); 
+transform: scaleX(.6)} .MJXp-scale7 {-webkit-transform: scaleX(.7); 
+-moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); 
+transform: scaleX(.7)} .MJXp-scale8 {-webkit-transform: scaleX(.8); 
+-moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); 
+transform: scaleX(.8)} .MJXp-scale9 {-webkit-transform: scaleX(.9); 
+-moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); 
+transform: scaleX(.9)} .MathJax_PHTML .noError {vertical-align: -2px; font-size: 
+90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid} 
+.MathJax_Display {text-align: center; margin: 0; position: relative; display: 
+block!important; text-indent: 0; max-width: none; max-height: none; min-width: 
+0; min-height: 0; width: 100%} .MathJax .merror {background-color: #FFFF88; 
+color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; 
+font-size: 90%} .MathJax .MJX-monospace {font-family: monospace} .MathJax 
+.MJX-sans-serif {font-family: sans-serif} #MathJax_Tooltip {background-color: 
+InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 
+5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 
+5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; padding: 3px 4px; z-index: 
+401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: 
+none} .MathJax {display: inline; font-style: normal; font-weight: normal; 
+line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; 
+text-align: left; text-transform: none; letter-spacing: normal; word-spacing: 
+normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; 
+max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; 
+padding: 0; margin: 0} .MathJax:focus, body :focus .MathJax {display: 
+inline-table} .MathJax img, .MathJax nobr, .MathJax a {border: 0; padding: 0; 
+margin: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; 
+vertical-align: 0; line-height: normal; text-decoration: none} img.MathJax_strut 
+{border: 0!important; padding: 0!important; margin: 0!important; vertical-align: 
+0!important} .MathJax span {display: inline; position: static; border: 0; 
+padding: 0; margin: 0; vertical-align: 0; line-height: normal; text-decoration: 
+none} .MathJax nobr {white-space: nowrap!important} .MathJax img {display: 
+inline!important; float: none!important} .MathJax * {transition: none; 
+-webkit-transition: none; -moz-transition: none; -ms-transition: none; 
+-o-transition: none} .MathJax_Processing {visibility: hidden; position: fixed; 
+width: 0; height: 0; overflow: hidden} .MathJax_Processed {display: 
+none!important} .MathJax_ExBox {display: block!important; overflow: hidden; 
+width: 1px; height: 60ex; min-height: 0; max-height: none} .MathJax 
+.MathJax_EmBox {display: block!important; overflow: hidden; width: 1px; height: 
+60em; min-height: 0; max-height: none} .MathJax .MathJax_HitBox {cursor: text; 
+background: white; opacity: 0; filter: alpha(opacity=0)} .MathJax 
+.MathJax_HitBox * {filter: none; opacity: 1; background: transparent}
+ #MathJax_Tooltip * {filter: none; opacity: 1; background: transparent}
+ @font-face {font-family: MathJax_Blank; src: url('about:blank')} .MathJax 
+.noError {vertical-align: -2px; font-size: 90%; text-align: left; color: black; 
+padding: 1px 3px; border: 1px solid} /* * Copyright (c) Jupyter Development 
+Team. * Distributed under the terms of the Modified BSD License. */ /* Override 
+the correction for the prompt area in 
+https://github.com/jupyter/notebook/blob/dd41d9fd5c4f698bd7468612d877828a7eeb0e7a/IPython/html/static/notebook/less/outputarea.less#L110M
+*/ .jupyter-widgets-output-area div.output_subarea { max-width: 100%; } 
+/*----------------------------------------------------------------------------- 
+| Copyright (c) 2014-2017, PhosphorJS Contributors | | Distributed under the 
+terms of the BSD 3-Clause License. | | The full license is in the file LICENSE, 
+distributed with this software.
+ |----------------------------------------------------------------------------*/
+ /*----------------------------------------------------------------------------- 
+| Copyright (c) 2014-2017, PhosphorJS Contributors | | Distributed under the 
+terms of the BSD 3-Clause License. | | The full license is in the file LICENSE, 
+distributed with this software.
+ |----------------------------------------------------------------------------*/
+ .p-Widget { -webkit-box-sizing: border-box; box-sizing: border-box; position: 
+relative; overflow: hidden; cursor: default; } .p-Widget.p-mod-hidden { display: 
+none !important; }
+ /*----------------------------------------------------------------------------- 
+| Copyright (c) 2014-2017, PhosphorJS Contributors | | Distributed under the 
+terms of the BSD 3-Clause License. | | The full license is in the file LICENSE, 
+distributed with this software.
+ |----------------------------------------------------------------------------*/
+ .p-CommandPalette { display: -webkit-box; display: -ms-flexbox; display: flex; 
+-webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: 
+column; flex-direction: column; -webkit-user-select: none; -moz-user-select: 
+none; -ms-user-select: none; user-select: none; } .p-CommandPalette-search { 
+-webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; }
+ .p-CommandPalette-content { -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 
+auto; margin: 0; padding: 0; min-height: 0; overflow: auto; list-style-type: 
+none; } .p-CommandPalette-header { overflow: hidden; white-space: nowrap; 
+text-overflow: ellipsis; } .p-CommandPalette-itemShortcut { float: right; }
+ .p-CommandPalette-itemLabel { overflow: hidden; white-space: nowrap; 
+text-overflow: ellipsis; }
+ /*----------------------------------------------------------------------------- 
+| Copyright (c) 2014-2017, PhosphorJS Contributors | | Distributed under the 
+terms of the BSD 3-Clause License. | | The full license is in the file LICENSE, 
+distributed with this software.
+ |----------------------------------------------------------------------------*/
+ .p-DockPanel { z-index: 0; } .p-DockPanel-widget { z-index: 0; }
+ .p-DockPanel-tabBar { z-index: 1; } .p-DockPanel-handle { z-index: 2; }
+ .p-DockPanel-handle.p-mod-hidden { display: none !important; }
+ .p-DockPanel-handle:after { position: absolute; top: 0; left: 0; width: 100%; 
+height: 100%; content: ''; } .p-DockPanel-handle[data-orientation='horizontal'] 
+{ cursor: ew-resize; } .p-DockPanel-handle[data-orientation='vertical'] { 
+cursor: ns-resize; } .p-DockPanel-handle[data-orientation='horizontal']:after { 
+left: 50%; min-width: 8px; -webkit-transform: translateX(-50%); transform: 
+translateX(-50%); } .p-DockPanel-handle[data-orientation='vertical']:after { 
+top: 50%; min-height: 8px; -webkit-transform: translateY(-50%); transform: 
+translateY(-50%); } .p-DockPanel-overlay { z-index: 3; -webkit-box-sizing: 
+border-box; box-sizing: border-box; pointer-events: none; }
+ .p-DockPanel-overlay.p-mod-hidden { display: none !important; }
+ /*----------------------------------------------------------------------------- 
+| Copyright (c) 2014-2017, PhosphorJS Contributors | | Distributed under the 
+terms of the BSD 3-Clause License. | | The full license is in the file LICENSE, 
+distributed with this software.
+ |----------------------------------------------------------------------------*/
+ .p-Menu { z-index: 10000; position: absolute; white-space: nowrap; overflow-x: 
+hidden; overflow-y: auto; outline: none; -webkit-user-select: none; 
+-moz-user-select: none; -ms-user-select: none; user-select: none; }
+ .p-Menu-content { margin: 0; padding: 0; display: table; list-style-type: none;
+ } .p-Menu-item { display: table-row; } .p-Menu-item.p-mod-hidden,
+ .p-Menu-item.p-mod-collapsed { display: none !important; } .p-Menu-itemIcon,
+ .p-Menu-itemSubmenuIcon { display: table-cell; text-align: center; }
+ .p-Menu-itemLabel { display: table-cell; text-align: left; }
+ .p-Menu-itemShortcut { display: table-cell; text-align: right; }
+ /*----------------------------------------------------------------------------- 
+| Copyright (c) 2014-2017, PhosphorJS Contributors | | Distributed under the 
+terms of the BSD 3-Clause License. | | The full license is in the file LICENSE, 
+distributed with this software.
+ |----------------------------------------------------------------------------*/
+ .p-MenuBar { outline: none; -webkit-user-select: none; -moz-user-select: none; 
+-ms-user-select: none; user-select: none; } .p-MenuBar-content { margin: 0; 
+padding: 0; display: -webkit-box; display: -ms-flexbox; display: flex; 
+-webkit-box-orient: horizontal; -webkit-box-direction: normal; 
+-ms-flex-direction: row; flex-direction: row; list-style-type: none; }
+ .p-MenuBar-item { -webkit-box-sizing: border-box; box-sizing: border-box; }
+ .p-MenuBar-itemIcon, .p-MenuBar-itemLabel { display: inline-block; }
+ /*----------------------------------------------------------------------------- 
+| Copyright (c) 2014-2017, PhosphorJS Contributors | | Distributed under the 
+terms of the BSD 3-Clause License. | | The full license is in the file LICENSE, 
+distributed with this software.
+ |----------------------------------------------------------------------------*/
+ .p-ScrollBar { display: -webkit-box; display: -ms-flexbox; display: flex; 
+-webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; 
+user-select: none; } .p-ScrollBar[data-orientation='horizontal'] { 
+-webkit-box-orient: horizontal; -webkit-box-direction: normal; 
+-ms-flex-direction: row; flex-direction: row; }
+ .p-ScrollBar[data-orientation='vertical'] { -webkit-box-orient: vertical; 
+-webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: 
+column; } .p-ScrollBar-button { -webkit-box-sizing: border-box; box-sizing: 
+border-box; -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; }
+ .p-ScrollBar-track { -webkit-box-sizing: border-box; box-sizing: border-box; 
+position: relative; overflow: hidden; -webkit-box-flex: 1; -ms-flex: 1 1 auto; 
+flex: 1 1 auto; } .p-ScrollBar-thumb { -webkit-box-sizing: border-box; 
+box-sizing: border-box; position: absolute; }
+ /*----------------------------------------------------------------------------- 
+| Copyright (c) 2014-2017, PhosphorJS Contributors | | Distributed under the 
+terms of the BSD 3-Clause License. | | The full license is in the file LICENSE, 
+distributed with this software.
+ |----------------------------------------------------------------------------*/
+ .p-SplitPanel-child { z-index: 0; } .p-SplitPanel-handle { z-index: 1; }
+ .p-SplitPanel-handle.p-mod-hidden { display: none !important; }
+ .p-SplitPanel-handle:after { position: absolute; top: 0; left: 0; width: 100%; 
+height: 100%; content: ''; } .p-SplitPanel[data-orientation='horizontal'] > 
+.p-SplitPanel-handle { cursor: ew-resize; }
+ .p-SplitPanel[data-orientation='vertical'] > .p-SplitPanel-handle { cursor: 
+ns-resize; } .p-SplitPanel[data-orientation='horizontal'] > 
+.p-SplitPanel-handle:after { left: 50%; min-width: 8px; -webkit-transform: 
+translateX(-50%); transform: translateX(-50%); }
+ .p-SplitPanel[data-orientation='vertical'] > .p-SplitPanel-handle:after { top: 
+50%; min-height: 8px; -webkit-transform: translateY(-50%); transform: 
+translateY(-50%); }
+ /*----------------------------------------------------------------------------- 
+| Copyright (c) 2014-2017, PhosphorJS Contributors | | Distributed under the 
+terms of the BSD 3-Clause License. | | The full license is in the file LICENSE, 
+distributed with this software.
+ |----------------------------------------------------------------------------*/
+ .p-TabBar { display: -webkit-box; display: -ms-flexbox; display: flex; 
+-webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; 
+user-select: none; } .p-TabBar[data-orientation='horizontal'] { 
+-webkit-box-orient: horizontal; -webkit-box-direction: normal; 
+-ms-flex-direction: row; flex-direction: row; }
+ .p-TabBar[data-orientation='vertical'] { -webkit-box-orient: vertical; 
+-webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: 
+column; } .p-TabBar-content { margin: 0; padding: 0; display: -webkit-box; 
+display: -ms-flexbox; display: flex; -webkit-box-flex: 1; -ms-flex: 1 1 auto; 
+flex: 1 1 auto; list-style-type: none; }
+ .p-TabBar[data-orientation='horizontal'] > .p-TabBar-content { 
+-webkit-box-orient: horizontal; -webkit-box-direction: normal; 
+-ms-flex-direction: row; flex-direction: row; }
+ .p-TabBar[data-orientation='vertical'] > .p-TabBar-content { 
+-webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: 
+column; flex-direction: column; } .p-TabBar-tab { display: -webkit-box; display: 
+-ms-flexbox; display: flex; -webkit-box-orient: horizontal; 
+-webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; 
+-webkit-box-sizing: border-box; box-sizing: border-box; overflow: hidden; }
+ .p-TabBar-tabIcon, .p-TabBar-tabCloseIcon { -webkit-box-flex: 0; -ms-flex: 0 0 
+auto; flex: 0 0 auto; } .p-TabBar-tabLabel { -webkit-box-flex: 1; -ms-flex: 1 1 
+auto; flex: 1 1 auto; overflow: hidden; white-space: nowrap; }
+ .p-TabBar-tab.p-mod-hidden { display: none !important; }
+ .p-TabBar.p-mod-dragging .p-TabBar-tab { position: relative; }
+ .p-TabBar.p-mod-dragging[data-orientation='horizontal'] .p-TabBar-tab { left: 
+0; -webkit-transition: left 150ms ease; transition: left 150ms ease; }
+ .p-TabBar.p-mod-dragging[data-orientation='vertical'] .p-TabBar-tab { top: 0; 
+-webkit-transition: top 150ms ease; transition: top 150ms ease; }
+ .p-TabBar.p-mod-dragging .p-TabBar-tab.p-mod-dragging { -webkit-transition: 
+none; transition: none; }
+ /*----------------------------------------------------------------------------- 
+| Copyright (c) 2014-2017, PhosphorJS Contributors | | Distributed under the 
+terms of the BSD 3-Clause License. | | The full license is in the file LICENSE, 
+distributed with this software.
+ |----------------------------------------------------------------------------*/
+ .p-TabPanel-tabBar { z-index: 1; } .p-TabPanel-stackedPanel { z-index: 0; } /* 
+Copyright (c) Jupyter Development Team. * Distributed under the terms of the 
+Modified BSD License. */ .jupyter-widgets-disconnected::before { content: 
+"\F127"; /* chain-broken */ display: inline-block; font: normal normal normal 
+14px/1 FontAwesome; font-size: inherit; text-rendering: auto; 
+-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; color: 
+#d9534f; padding: 3px; -ms-flex-item-align: start; align-self: flex-start; } /* 
+Copyright (c) Jupyter Development Team. * Distributed under the terms of the 
+Modified BSD License. */ /* We import all of these together in a single css file 
+because the Webpack loader sees only one file at a time. This allows postcss to 
+see the variable definitions when they are used. */
+ /*----------------------------------------------------------------------------- 
+| Copyright (c) Jupyter Development Team. | Distributed under the terms of the 
+Modified BSD License.
+ |----------------------------------------------------------------------------*/
+ /* This file is copied from the JupyterLab project to define default styling 
+for when the widget styling is compiled down to eliminate CSS variables. We make 
+one change - we comment out the font import below. */ /** * The material design 
+colors are adapted from google-material-color v1.2.6 * 
+https://github.com/danlevan/google-material-color * 
+https://github.com/danlevan/google-material-color/blob/f67ca5f4028b2f1b34862f64b0ca67323f91b088/dist/palette.var.cssn
+* * The license for the material design color CSS variables is as follows (see * 
+https://github.com/danlevan/google-material-color/blob/f67ca5f4028b2f1b34862f64b0ca67323f91b088/LICENSE)d
+* * The MIT License (MIT) * * Copyright (c) 2014 Dan Le Van * * Permission is 
+hereby granted, free of charge, to any person obtaining a copy * of this 
+software and associated documentation files (the "Software"), to deal * in the 
+Software without restriction, including without limitation the rights * to use, 
+copy, modify, merge, publish, distribute, sublicense, and/or sell * copies of 
+the Software, and to permit persons to whom the Software is * furnished to do 
+so, subject to the following conditions: * * The above copyright notice and this 
+permission notice shall be included in * all copies or substantial portions of 
+the Software. * * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY 
+KIND, EXPRESS OR * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
+MERCHANTABILITY, * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO 
+EVENT SHALL THE * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES 
+OR OTHER * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, 
+ARISING FROM, * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+DEALINGS IN THE * SOFTWARE. */ /* The following CSS variables define the main, 
+public API for styling JupyterLab. These variables should be used by all plugins 
+wherever possible. In other words, plugins should not define custom colors, 
+sizes, etc unless absolutely necessary. This enables users to change the visual 
+theme of JupyterLab by changing these variables. Many variables appear in an 
+ordered sequence (0,1,2,3). These sequences are designed to work well together, 
+so for example, `--jp-border-color1` should be used with `--jp-layout-color1`. 
+The numbers have the following meanings: * 0: super-primary, reserved for 
+special emphasis * 1: primary, most important under normal situations * 2: 
+secondary, next most important under normal situations * 3: tertiary, next most 
+important under normal situations Throughout JupyterLab, we are mostly following 
+principles from Google's Material Design when selecting colors. We are not, 
+however, following all of MD as it is not optimized for dense, information rich 
+UIs. */ /* * Optional monospace font for input/output prompt. */ /* Commented 
+out in ipywidgets since we don't need it. */ /* @import 
+url('https://fonts.googleapis.com/css?family=Roboto+Mono'); */ /* * Added for 
+compabitility with output area */ :root { /* Borders The following variables, 
+specify the visual styling of borders in JupyterLab. */ /* UI Fonts The UI font 
+CSS variables are used for the typography all of the JupyterLab user interface 
+elements that are not directly user generated content. */ /* Base font size */ 
+/* Ensures px perfect FontAwesome icons */ /* Use these font colors against the 
+corresponding main layout colors. In a light theme, these go from dark to light. 
+*/ /* Use these against the brand/accent/warn/error colors. These will typically 
+go from light to darker, in both a dark and light theme */ /* Content Fonts 
+Content font variables are used for typography of user generated content. */ /* 
+Base font size */ /* Layout The following are the main layout colors use in 
+JupyterLab. In a light theme these would go from light to dark. */ /* 
+Brand/accent */ /* State colors (warn, error, success, info) */ /* Cell specific 
+styles */ /* A custom blend of MD grey and blue 600 * See 
+https://meyerweb.com/eric/tools/color-blend/#546E7A:1E88E5:5:hex */ /* A custom 
+blend of MD grey and orange 600 * 
+https://meyerweb.com/eric/tools/color-blend/#546E7A:F4511E:5:hex */ /* Notebook 
+specific styles */ /* Console specific styles */ /* Toolbar specific styles */ }
+ /* Copyright (c) Jupyter Development Team. * Distributed under the terms of the 
+Modified BSD License. */ /* * We assume that the CSS variables in * 
+https://github.com/jupyterlab/jupyterlab/blob/master/src/default-theme/variables.csst
+* have been defined. */ :root { /* margin between inline elements */ /* From 
+Material Design Lite */ } .jupyter-widgets { margin: 2px; -webkit-box-sizing: 
+border-box; box-sizing: border-box; color: black; overflow: visible; }
+ .jupyter-widgets.jupyter-widgets-disconnected::before { line-height: 28px; 
+height: 28px; } .jp-Output-result > .jupyter-widgets { margin-left: 0; 
+margin-right: 0; } /* vbox and hbox */ .widget-inline-hbox { /* Horizontal 
+widgets */ -webkit-box-sizing: border-box; box-sizing: border-box; display: 
+-webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: 
+horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; 
+flex-direction: row; -webkit-box-align: baseline; -ms-flex-align: baseline; 
+align-items: baseline; } .widget-inline-vbox { /* Vertical Widgets */ 
+-webkit-box-sizing: border-box; box-sizing: border-box; display: -webkit-box; 
+display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; 
+-webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: 
+column; -webkit-box-align: center; -ms-flex-align: center; align-items: center;
+ } .widget-box { -webkit-box-sizing: border-box; box-sizing: border-box; 
+display: -webkit-box; display: -ms-flexbox; display: flex; margin: 0; overflow: 
+auto; } .widget-hbox { -webkit-box-orient: horizontal; -webkit-box-direction: 
+normal; -ms-flex-direction: row; flex-direction: row; } .widget-vbox { 
+-webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: 
+column; flex-direction: column; } /* General Button Styling */ .jupyter-button { 
+padding-left: 10px; padding-right: 10px; padding-top: 0px; padding-bottom: 0px; 
+display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: 
+ellipsis; text-align: center; font-size: 13px; cursor: pointer; height: 28px; 
+border: 0px solid; line-height: 28px; -webkit-box-shadow: none; box-shadow: 
+none; color: rgba(0, 0, 0, .8); background-color: #EEEEEE; border-color: 
+#E0E0E0; border: none; } .jupyter-button i.fa { margin-right: 4px; 
+pointer-events: none; } .jupyter-button:empty:before { content: "\200B"; /* 
+zero-width space */ } .jupyter-widgets.jupyter-button:disabled { opacity: 0.6; }
+ .jupyter-button i.fa.center { margin-right: 0; } .jupyter-button:hover:enabled, 
+.jupyter-button:focus:enabled { /* MD Lite 2dp shadow */ -webkit-box-shadow: 0 
+2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 
+rgba(0, 0, 0, .12); box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px 
+rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12); } .jupyter-button:active, 
+.jupyter-button.mod-active { /* MD Lite 4dp shadow */ -webkit-box-shadow: 0 4px 
+5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px 
+rgba(0, 0, 0, .2); box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 
+rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2); color: rgba(0, 0, 0, .8); 
+background-color: #BDBDBD; } .jupyter-button:focus:enabled { outline: 1px solid 
+#64B5F6; } /* Button "Primary" Styling */ .jupyter-button.mod-primary { color: 
+rgba(255, 255, 255, 1.0); background-color: #2196F3; }
+ .jupyter-button.mod-primary.mod-active { color: rgba(255, 255, 255, 1); 
+background-color: #1976D2; } .jupyter-button.mod-primary:active { color: 
+rgba(255, 255, 255, 1); background-color: #1976D2; } /* Button "Success" Styling 
+*/ .jupyter-button.mod-success { color: rgba(255, 255, 255, 1.0); 
+background-color: #4CAF50; } .jupyter-button.mod-success.mod-active { color: 
+rgba(255, 255, 255, 1); background-color: #388E3C; }
+ .jupyter-button.mod-success:active { color: rgba(255, 255, 255, 1); 
+background-color: #388E3C; } /* Button "Info" Styling */
+ .jupyter-button.mod-info { color: rgba(255, 255, 255, 1.0); background-color: 
+#00BCD4; } .jupyter-button.mod-info.mod-active { color: rgba(255, 255, 255, 1); 
+background-color: #0097A7; } .jupyter-button.mod-info:active { color: rgba(255, 
+255, 255, 1); background-color: #0097A7; } /* Button "Warning" Styling */
+ .jupyter-button.mod-warning { color: rgba(255, 255, 255, 1.0); 
+background-color: #FF9800; } .jupyter-button.mod-warning.mod-active { color: 
+rgba(255, 255, 255, 1); background-color: #F57C00; }
+ .jupyter-button.mod-warning:active { color: rgba(255, 255, 255, 1); 
+background-color: #F57C00; } /* Button "Danger" Styling */
+ .jupyter-button.mod-danger { color: rgba(255, 255, 255, 1.0); background-color: 
+#F44336; } .jupyter-button.mod-danger.mod-active { color: rgba(255, 255, 255, 
+1); background-color: #D32F2F; } .jupyter-button.mod-danger:active { color: 
+rgba(255, 255, 255, 1); background-color: #D32F2F; } /* Widget Button*/
+ .widget-button, .widget-toggle-button { width: 148px; } /* Widget Label Styling 
+*/ /* Override Bootstrap label css */ .jupyter-widgets label { margin-bottom: 0; 
+margin-bottom: initial; } .widget-label-basic { /* Basic Label */ color: black; 
+font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; 
+line-height: 28px; } .widget-label { /* Label */ color: black; font-size: 13px; 
+overflow: hidden; text-overflow: ellipsis; white-space: nowrap; line-height: 
+28px; } .widget-inline-hbox .widget-label { /* Horizontal Widget Label */ color: 
+black; text-align: right; margin-right: 8px; width: 80px; -ms-flex-negative: 0; 
+flex-shrink: 0; } .widget-inline-vbox .widget-label { /* Vertical Widget Label 
+*/ color: black; text-align: center; line-height: 28px; } /* Widget Readout 
+Styling */ .widget-readout { color: black; font-size: 13px; height: 28px; 
+line-height: 28px; overflow: hidden; white-space: nowrap; text-align: center; }
+ .widget-readout.overflow { /* Overflowing Readout */ /* From Material Design 
+Lite shadow-key-umbra-opacity: 0.2; shadow-key-penumbra-opacity: 0.14; 
+shadow-ambient-shadow-opacity: 0.12; */ -webkit-box-shadow: 0 2px 2px 0 rgba(0, 
+0, 0, .2), 0 3px 1px -2px rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12); 
+box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .2), 0 3px 1px -2px rgba(0, 0, 0, .14), 0 
+1px 5px 0 rgba(0, 0, 0, .12); } .widget-inline-hbox .widget-readout { /* 
+Horizontal Readout */ text-align: center; max-width: 148px; min-width: 72px; 
+margin-left: 4px; } .widget-inline-vbox .widget-readout { /* Vertical Readout */ 
+margin-top: 4px; /* as wide as the widget */ width: inherit; } /* Widget 
+Checkbox Styling */ .widget-checkbox { width: 300px; height: 28px; line-height: 
+28px; } .widget-checkbox input[type="checkbox"] { margin: 0px 8px 0px 0px; 
+line-height: 28px; font-size: large; -webkit-box-flex: 1; -ms-flex-positive: 1; 
+flex-grow: 1; -ms-flex-negative: 0; flex-shrink: 0; -ms-flex-item-align: center; 
+align-self: center; } /* Widget Valid Styling */ .widget-valid { height: 28px; 
+line-height: 28px; width: 148px; font-size: 13px; } .widget-valid i:before { 
+line-height: 28px; margin-right: 4px; margin-left: 4px; /* from the fa class in 
+FontAwesome: 
+https://github.com/FortAwesome/Font-Awesome/blob/49100c7c3a7b58d50baa71efef11af41a66b03d3/css/font-awesome.css#L14p
+*/ display: inline-block; font: normal normal normal 14px/1 FontAwesome; 
+font-size: inherit; text-rendering: auto; -webkit-font-smoothing: antialiased; 
+-moz-osx-font-smoothing: grayscale; } .widget-valid.mod-valid i:before { 
+content: "\F00C"; color: green; } .widget-valid.mod-invalid i:before { content: 
+"\F00D"; color: red; } .widget-valid.mod-valid .widget-valid-readout { display: 
+none; } /* Widget Text and TextArea Stying */ .widget-textarea, .widget-text { 
+width: 300px; } .widget-text input[type="text"], .widget-text 
+input[type="number"]{ height: 28px; line-height: 28px; } .widget-text 
+input[type="text"]:disabled, .widget-text input[type="number"]:disabled, 
+.widget-textarea textarea:disabled { opacity: 0.6; } .widget-text 
+input[type="text"], .widget-text input[type="number"], .widget-textarea textarea 
+{ -webkit-box-sizing: border-box; box-sizing: border-box; border: 1px solid 
+#9E9E9E; background-color: white; color: rgba(0, 0, 0, .8); font-size: 13px; 
+padding: 4px 8px; -webkit-box-flex: 1; -ms-flex-positive: 1; flex-grow: 1; 
+min-width: 0; /* This makes it possible for the flexbox to shrink this input */ 
+-ms-flex-negative: 1; flex-shrink: 1; outline: none !important; }
+ .widget-textarea textarea { height: inherit; width: inherit; } .widget-text 
+input:focus, .widget-textarea textarea:focus { border-color: #64B5F6; } /* 
+Widget Slider */ .widget-slider .ui-slider { /* Slider Track */ border: 1px 
+solid #BDBDBD; background: #BDBDBD; -webkit-box-sizing: border-box; box-sizing: 
+border-box; position: relative; border-radius: 0px; } .widget-slider .ui-slider 
+.ui-slider-handle { /* Slider Handle */ outline: none !important; /* focused 
+slider handles are colored - see below */ position: absolute; background-color: 
+white; border: 1px solid #9E9E9E; -webkit-box-sizing: border-box; box-sizing: 
+border-box; z-index: 1; background-image: none; /* Override jquery-ui */ } /* 
+Override jquery-ui */ .widget-slider .ui-slider .ui-slider-handle:hover, 
+.widget-slider .ui-slider .ui-slider-handle:focus { background-color: #2196F3; 
+border: 1px solid #2196F3; } .widget-slider .ui-slider .ui-slider-handle:active 
+{ background-color: #2196F3; border-color: #2196F3; z-index: 2; 
+-webkit-transform: scale(1.2); transform: scale(1.2); } .widget-slider 
+.ui-slider .ui-slider-range { /* Interval between the two specified value of a 
+double slider */ position: absolute; background: #2196F3; z-index: 0; } /* 
+Shapes of Slider Handles */ .widget-hslider .ui-slider .ui-slider-handle { 
+width: 16px; height: 16px; margin-top: -7px; margin-left: -7px; border-radius: 
+50%; top: 0; } .widget-vslider .ui-slider .ui-slider-handle { width: 16px; 
+height: 16px; margin-bottom: -7px; margin-left: -7px; border-radius: 50%; left: 
+0; } .widget-hslider .ui-slider .ui-slider-range { height: 8px; margin-top: 
+-3px; } .widget-vslider .ui-slider .ui-slider-range { width: 8px; margin-left: 
+-3px; } /* Horizontal Slider */ .widget-hslider { width: 300px; height: 28px; 
+line-height: 28px; /* Override the align-items baseline. This way, the 
+description and readout still seem to align their baseline properly, and we 
+don't have to have align-self: stretch in the .slider-container. */ 
+-webkit-box-align: center; -ms-flex-align: center; align-items: center; }
+ .widgets-slider .slider-container { overflow: visible; } .widget-hslider 
+.slider-container { height: 28px; margin-left: 6px; margin-right: 6px; 
+-webkit-box-flex: 1; -ms-flex: 1 1 148px; flex: 1 1 148px; } .widget-hslider 
+.ui-slider { /* Inner, invisible slide div */ height: 4px; margin-top: 12px; 
+width: 100%; } /* Vertical Slider */ .widget-vbox .widget-label { height: 28px; 
+line-height: 28px; } .widget-vslider { /* Vertical Slider */ height: 200px; 
+width: 72px; } .widget-vslider .slider-container { -webkit-box-flex: 1; 
+-ms-flex: 1 1 148px; flex: 1 1 148px; margin-left: auto; margin-right: auto; 
+margin-bottom: 6px; margin-top: 6px; display: -webkit-box; display: -ms-flexbox; 
+display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; 
+-ms-flex-direction: column; flex-direction: column; } .widget-vslider 
+.ui-slider-vertical { /* Inner, invisible slide div */ width: 4px; 
+-webkit-box-flex: 1; -ms-flex-positive: 1; flex-grow: 1; margin-left: auto; 
+margin-right: auto; } /* Widget Progress Styling */ .progress-bar { 
+-webkit-transition: none; transition: none; } .progress-bar { height: 28px; }
+ .progress-bar { background-color: #2196F3; } .progress-bar-success { 
+background-color: #4CAF50; } .progress-bar-info { background-color: #00BCD4; }
+ .progress-bar-warning { background-color: #FF9800; } .progress-bar-danger { 
+background-color: #F44336; } .progress { background-color: #EEEEEE; border: 
+none; -webkit-box-shadow: none; box-shadow: none; } /* Horisontal Progress */
+ .widget-hprogress { /* Progress Bar */ height: 28px; line-height: 28px; width: 
+300px; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
+ .widget-hprogress .progress { -webkit-box-flex: 1; -ms-flex-positive: 1; 
+flex-grow: 1; margin-top: 4px; margin-bottom: 4px; -ms-flex-item-align: stretch; 
+align-self: stretch; /* Override bootstrap style */ height: auto; height: 
+initial; } /* Vertical Progress */ .widget-vprogress { height: 200px; width: 
+72px; } .widget-vprogress .progress { -webkit-box-flex: 1; -ms-flex-positive: 1; 
+flex-grow: 1; width: 20px; margin-left: auto; margin-right: auto; margin-bottom: 
+0; } /* Select Widget Styling */ .widget-dropdown { height: 28px; width: 300px; 
+line-height: 28px; } .widget-dropdown > select { border: 1px solid #9E9E9E; 
+border-radius: 0; height: inherit; -webkit-box-flex: 1; -ms-flex: 1 1 148px; 
+flex: 1 1 148px; min-width: 0; /* This makes it possible for the flexbox to 
+shrink this input */ -webkit-box-sizing: border-box; box-sizing: border-box; 
+outline: none !important; -webkit-box-shadow: none; box-shadow: none; 
+background-color: white; color: rgba(0, 0, 0, .8); font-size: 13px; 
+vertical-align: top; padding-left: 8px; appearance: none; -webkit-appearance: 
+none; -moz-appearance: none; background-repeat: no-repeat; background-size: 
+20px; background-position: right center; background-image: 
+url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjIuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCAxOCAxOCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTggMTg7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KCS5zdDB7ZmlsbDpub25lO30KPC9zdHlsZT4KPHBhdGggZD0iTTUuMiw1LjlMOSw5LjdsMy44LTMuOGwxLjIsMS4ybC00LjksNWwtNC45LTVMNS4yLDUuOXoiLz4KPHBhdGggY2xhc3M9InN0MCIgZD0iTTAtMC42aDE4djE4SDBWLTAuNnoiLz4KPC9zdmc+Cg");
+ } .widget-dropdown > select:focus { border-color: #64B5F6; } .widget-dropdown > 
+select:disabled { opacity: 0.6; } /* To disable the dotted border in Firefox 
+around select controls. See http://stackoverflow.com/a/18853002 */
+ .widget-dropdown > select:-moz-focusring { color: transparent; text-shadow: 0 0 
+0 #000; } .widget-dropdown > select > option:checked { color: rgba(0, 0, 0, 
+1.0); background: white repeat url("data:image/gif;base64,R0lGO..."); } /* 
+Select and SelectMultiple */ .widget-select { width: 300px; line-height: 28px; 
+/* Because Firefox defines the baseline of a select as the bottom of the 
+control, we align the entire control to the top and add padding to the select to 
+get an approximate first line baseline alignment. */ -webkit-box-align: start; 
+-ms-flex-align: start; align-items: flex-start; } .widget-select > select { 
+border: 1px solid #9E9E9E; background-color: white; color: rgba(0, 0, 0, .8); 
+font-size: 13px; -webkit-box-flex: 1; -ms-flex: 1 1 148px; flex: 1 1 148px; 
+outline: none !important; overflow: auto; height: inherit; /* Because Firefox 
+defines the baseline of a select as the bottom of the control, we align the 
+entire control to the top and add padding to the select to get an approximate 
+first line baseline alignment. */ padding-top: 5px; } .widget-select > 
+select:focus { border-color: #64B5F6; } .widget-select > select > option:checked 
+{ color: rgba(0, 0, 0, 1.0); background: white repeat 
+url("data:image/gif;base64,R0lGO..."); } .wiget-select > select > option { 
+padding-left: 4px; line-height: 28px; /* line-height doesn't work on some 
+browsers for select options */ padding-top: 21.5px; padding-bottom: 21.5px; } /* 
+Toggle Buttons Styling */ .widget-toggle-buttons { line-height: 28px; }
+ .widget-toggle-buttons .widget-toggle-button { margin-left: 2px; margin-right: 
+2px; } .widget-toggle-buttons .jupyter-button:disabled { opacity: 0.6; } /* 
+Radio Buttons Styling */ .widget-radio { width: 300px; line-height: 28px; }
+ .widget-radio-box { display: -webkit-box; display: -ms-flexbox; display: flex; 
+-webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: 
+column; flex-direction: column; -webkit-box-align: stretch; -ms-flex-align: 
+stretch; align-items: stretch; -webkit-box-sizing: border-box; box-sizing: 
+border-box; -webkit-box-flex: 1; -ms-flex-positive: 1; flex-grow: 1; 
+margin-bottom: 8px; } .widget-radio-box label { height: 20px; line-height: 20px; 
+font-size: 13px; } .widget-radio-box input { height: 20px; line-height: 20px; 
+margin: 0 8px 0 1px; float: left; } /* Color Picker Styling */
+ .widget-colorpicker { width: 300px; height: 28px; line-height: 28px; }
+ .widget-colorpicker > .widget-colorpicker-input { -webkit-box-flex: 1; 
+-ms-flex-positive: 1; flex-grow: 1; -ms-flex-negative: 1; flex-shrink: 1; 
+min-width: 72px; } .widget-colorpicker input[type="color"] { width: 28px; 
+height: 28px; padding: 0 2px; /* make the color square actually square on Chrome 
+on OS X */ background: white; color: rgba(0, 0, 0, .8); border: 1px solid 
+#9E9E9E; border-left: none; -webkit-box-flex: 0; -ms-flex-positive: 0; 
+flex-grow: 0; -ms-flex-negative: 0; flex-shrink: 0; -webkit-box-sizing: 
+border-box; box-sizing: border-box; -ms-flex-item-align: stretch; align-self: 
+stretch; outline: none !important; } .widget-colorpicker.concise 
+input[type="color"] { border-left: 1px solid #9E9E9E; } .widget-colorpicker 
+input[type="color"]:focus, .widget-colorpicker input[type="text"]:focus { 
+border-color: #64B5F6; } .widget-colorpicker input[type="text"] { 
+-webkit-box-flex: 1; -ms-flex-positive: 1; flex-grow: 1; outline: none 
+!important; height: 28px; line-height: 28px; background: white; color: rgba(0, 
+0, 0, .8); border: 1px solid #9E9E9E; font-size: 13px; padding: 4px 8px; 
+min-width: 0; /* This makes it possible for the flexbox to shrink this input */ 
+-ms-flex-negative: 1; flex-shrink: 1; -webkit-box-sizing: border-box; 
+box-sizing: border-box; } .widget-colorpicker input[type="text"]:disabled { 
+opacity: 0.6; } /* Date Picker Styling */ .widget-datepicker { width: 300px; 
+height: 28px; line-height: 28px; } .widget-datepicker input[type="date"] { 
+-webkit-box-flex: 1; -ms-flex-positive: 1; flex-grow: 1; -ms-flex-negative: 1; 
+flex-shrink: 1; min-width: 0; /* This makes it possible for the flexbox to 
+shrink this input */ outline: none !important; height: 28px; border: 1px solid 
+#9E9E9E; background-color: white; color: rgba(0, 0, 0, .8); font-size: 13px; 
+padding: 4px 8px; -webkit-box-sizing: border-box; box-sizing: border-box; }
+ .widget-datepicker input[type="date"]:focus { border-color: #64B5F6; }
+ .widget-datepicker input[type="date"]:invalid { border-color: #FF9800; }
+ .widget-datepicker input[type="date"]:disabled { opacity: 0.6; } /* Play Widget 
+*/ .widget-play { width: 148px; display: -webkit-box; display: -ms-flexbox; 
+display: flex; -webkit-box-align: stretch; -ms-flex-align: stretch; align-items: 
+stretch; } .widget-play .jupyter-button { -webkit-box-flex: 1; 
+-ms-flex-positive: 1; flex-grow: 1; height: auto; } .widget-play 
+.jupyter-button:disabled { opacity: 0.6; } /* Tab Widget */ .jupyter-widgets 
+.p-TabBar { /* Necessary so that a tab can be shifted down to overlay the border 
+of the box below. */ overflow-x: visible; overflow-y: visible; }
+ .jupyter-widgets.widget-tab .p-TabBar.p-mod-horizontal > .p-TabBar-content { 
+-webkit-box-align: end; -ms-flex-align: end; align-items: flex-end; 
+margin-bottom: 0; } .jupyter-widgets.widget-tab { display: -webkit-box; display: 
+-ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: 
+normal; -ms-flex-direction: column; flex-direction: column; }
+ .jupyter-widgets.widget-tab > .widget-tab-contents { width: 100%; 
+-webkit-box-sizing: border-box; box-sizing: border-box; margin: 0; background: 
+white; color: rgba(0, 0, 0, .8); border: 1px solid #9E9E9E; padding: 15px; 
+-webkit-box-flex: 1; -ms-flex-positive: 1; flex-grow: 1; overflow: auto; }
+ .jupyter-widgets.widget-tab .widget-tab-contents .widget-tab-child.p-mod-hidden 
+{ display: none !important; } .jupyter-widgets.widget-tab 
+.widget-tab-bar.p-TabBar { font: 13px Helvetica, Arial, sans-serif; }
+ .jupyter-widgets.widget-tab .p-TabBar-tab { -webkit-box-flex: 0; -ms-flex: 0 1 
+144px; flex: 0 1 144px; min-width: 35px; min-height: 25px; line-height: 24px; 
+margin-left: -1px; padding: 0px 10px; background: #EEEEEE; color: rgba(0, 0, 0, 
+.5); border: 1px solid #9E9E9E; border-bottom: none; position: relative; }
+ .jupyter-widgets.widget-tab .p-TabBar-tab.p-mod-current { color: rgba(0, 0, 0, 
+1.0); /* We want the background to match the tab content background */ 
+background: white; min-height: 26px; -webkit-transform: translateY(1px); 
+transform: translateY(1px); } .jupyter-widgets.widget-tab 
+.p-TabBar-tab.p-mod-current:before { position: absolute; top: -1px; left: -1px; 
+content: ''; height: 2px; width: calc(100% + 2px); background: #2196F3; }
+ .jupyter-widgets.widget-tab .p-TabBar-tab:first-child { margin-left: 0; }
+ .jupyter-widgets.widget-tab .p-TabBar-tab:hover:not(.p-mod-current) { 
+background: white; color: rgba(0, 0, 0, .8); }
+ .jupyter-widgets.widget-tab.p-mod-closable > .p-TabBar-tabCloseIcon { 
+margin-left: 4px; } .jupyter-widgets.widget-tab.p-mod-closable > 
+.p-TabBar-tabCloseIcon:before { font-family: FontAwesome; content: '\F00D'; /* 
+close */ } .jupyter-widgets.widget-tab .p-TabBar-tabIcon,
+ .jupyter-widgets.widget-tab .p-TabBar-tabLabel, .jupyter-widgets.widget-tab 
+.p-TabBar-tabCloseIcon { line-height: 24px; } /* Accordion Widget */ .p-Collapse 
+{ display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: 
+vertical; -webkit-box-direction: normal; -ms-flex-direction: column; 
+flex-direction: column; -webkit-box-align: stretch; -ms-flex-align: stretch; 
+align-items: stretch; } .p-Collapse-header { padding: 4px; cursor: pointer; 
+color: rgba(0, 0, 0, .5); background-color: #EEEEEE; border: 1px solid #9E9E9E; 
+padding: 10px 15px; font-weight: bold; } .p-Collapse-header:hover { 
+background-color: white; color: rgba(0, 0, 0, .8); } .p-Collapse-open > 
+.p-Collapse-header { background-color: white; color: rgba(0, 0, 0, 1.0); cursor: 
+default; border-bottom: none; } .p-Collapse .p-Collapse-header::before { 
+content: '\F0DA\A0'; /* caret-right, non-breaking space */ display: 
+inline-block; font: normal normal normal 14px/1 FontAwesome; font-size: inherit; 
+text-rendering: auto; -webkit-font-smoothing: antialiased; 
+-moz-osx-font-smoothing: grayscale; } .p-Collapse-open > 
+.p-Collapse-header::before { content: '\F0D7\A0'; /* caret-down, non-breaking 
+space */ } .p-Collapse-contents { padding: 15px; background-color: white; color: 
+rgba(0, 0, 0, .8); border-left: 1px solid #9E9E9E; border-right: 1px solid 
+#9E9E9E; border-bottom: 1px solid #9E9E9E; overflow: auto; } .p-Accordion { 
+display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: 
+vertical; -webkit-box-direction: normal; -ms-flex-direction: column; 
+flex-direction: column; -webkit-box-align: stretch; -ms-flex-align: stretch; 
+align-items: stretch; } .p-Accordion .p-Collapse { margin-bottom: 0; }
+ .p-Accordion .p-Collapse + .p-Collapse { margin-top: 4px; } /* HTML widget */
+ .widget-html, .widget-htmlmath { font-size: 13px; } .widget-html > 
+.widget-html-content, .widget-htmlmath > .widget-html-content { /* Fill out the 
+area in the HTML widget */ -ms-flex-item-align: stretch; align-self: stretch; 
+-webkit-box-flex: 1; -ms-flex-positive: 1; flex-grow: 1; -ms-flex-negative: 1; 
+flex-shrink: 1; /* Makes sure the baseline is still aligned with other elements 
+*/ line-height: 28px; /* Make it possible to have absolutely-positioned elements 
+in the html */ position: relative; }  
+
+
+
+<div id='noscript'> Jupyter Notebook requires JavaScript.<br> Please enable it 
+to proceed. </div>  
+
+
+
+Logout  Data Mining Project 1- BamaFile1-Copy1 Last Checkpoint: a few seconds 
+ago (autosaved)    
+
+
+
+
+ Menu  
+Python 2  
+     
+
+
+
+
+Trusted
+
+
+ 
+
+  File
+
+    New Notebook
+
+      Python 2
+
+
+
+    Open...
+
+     
+
+    Make a Copy...
+
+
+    Rename...
+
+
+    Save and Checkpoint
+
+     
+
+    Revert to Checkpoint
+
+      Thursday, January 25, 2018 8:11 AM
+
+
+
+
+    Print Preview
+
+
+    Download as
+
+      Notebook (.ipynb)
+
+
+      Python (.py)
+
+
+      HTML (.html)
+
+
+      Markdown (.md)
+
+
+      reST (.rst)
+
+
+      LaTeX (.tex)
+
+
+      PDF via LaTeX (.pdf)
+
+
+
+    Deploy as
+
+
+
+    Trusted Notebook
+
+
+
+    Close and Halt
+
+
+
+  Edit
+
+    Cut Cells
+
+
+    Copy Cells
+
+
+    Paste Cells Above
+
+
+    Paste Cells Below
+
+
+    Paste Cells & Replace
+
+
+    Delete Cells
+
+
+    Undo Delete Cells
+
+
+
+    Split Cell
+
+
+    Merge Cell Above
+
+
+    Merge Cell Below
+
+
+
+    Move Cell Up
+
+
+    Move Cell Down
+
+
+
+    Edit Notebook Metadata
+
+
+
+    Find and Replace 
+
+
+
+    Cut Cell Attachments
+
+
+    Copy Cell Attachments
+
+
+    Paste Cell Attachments
+
+
+
+    Insert Image 
+
+
+
+  View
+
+    Toggle Header
+
+
+    Toggle Toolbar
+
+
+    Toggle Line Numbers
+
+
+    Cell Toolbar
+
+      None
+
+
+      Edit Metadata
+
+
+      Raw Cell Format
+
+
+      Slideshow
+
+
+      Attachments
+
+
+      Tags
+
+
+
+
+  Insert
+
+    Insert Cell Above
+
+
+    Insert Cell Below
+
+
+
+  Cell
+
+    Run Cells
+
+
+    Run Cells and Select Below
+
+
+    Run Cells and Insert Below
+
+
+    Run All
+
+
+    Run All Above
+
+
+    Run All Below
+
+
+
+    Cell Type
+
+      Code
+
+
+      Markdown
+
+
+      Raw NBConvert
+
+
+
+
+    Current Outputs
+
+      Toggle
+
+
+      Toggle Scrolling
+
+
+      Clear
+
+
+
+    All Output
+
+      Toggle
+
+
+      Toggle Scrolling
+
+
+      Clear
+
+
+
+
+  Kernel
+
+    Interrupt
+
+
+    Restart
+
+
+    Restart & Clear Output
+
+
+    Restart & Run All
+
+
+    Reconnect
+
+
+    Shutdown
+
+
+
+    Change kernel
+
+      Python 2
+
+
+
+
+  Widgets
+
+    Save Notebook Widget State
+
+
+    Clear Notebook Widget State
+
+
+    Download Widget State
+
+
+    Embed Widgets
+
+
+
+  Help
+
+    User Interface Tour
+
+
+    Keyboard Shortcuts
+
+
+    Edit Keyboard Shortcuts
+
+
+
+     Notebook Help 
+
+
+     Markdown 
+
+
+
+    Python
+
+
+    IPython
+
+
+    NumPy
+
+
+    SciPy
+
+
+    Matplotlib
+
+
+    SymPy
+
+
+    pandas
+
+
+
+    About
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  CodeMarkdownRaw NBConvertHeading-
+
+
+
+
+
+
+
+
+
+
+In [14]:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+import osimport csvimport pandas as pdimport numpy as npfrom datetime import datetime​​
+
+
+
+
+
+. . .
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+The packages here below are needed for visualizations, such as Matplotlib, Seaborn, and Plotly:​
+
+
+
+The packages here below are needed for visualizations, such as Matplotlib, 
+Seaborn, and Plotly:
+
+
+
+In [42]:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+import matplotlib as mplimport matplotlib.pyplot as pltimport matplotlib.patches as mpatchesfrom matplotlib import cmimport seaborn as sns​
+
+
+
+
+
+. . .
+
+
+
+In [99]:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+df = pd.read_csv('\\Users\\GTX8WNS\\Desktop\\SMU\\Data Mining\\KobeCompletedos.csv')dfprint df.head()
+
+
+
+
+
+
+
+         action_type combined_shot_type  type  game_event_id   game_id  \
+0          Jump Shot          Jump Shot     1             12  20000012   
+1          Jump Shot          Jump Shot     1             35  20000012   
+2          Jump Shot          Jump Shot     1             43  20000012   
+3  Driving Dunk Shot               Dunk     3            155  20000012   
+4          Jump Shot          Jump Shot     1            244  20000012   
+
+       lat  loc_x  loc_y       lon  minutes_remaining   ...         shot_type  \
+0  34.0443   -157      0 -118.4268                 10   ...    2PT Field Goal   
+1  33.9093   -101    135 -118.3708                  7   ...    2PT Field Goal   
+2  33.8693    138    175 -118.1318                  6   ...    2PT Field Goal   
+3  34.0443      0      0 -118.2698                  6   ...    2PT Field Goal   
+4  34.0553   -145    -11 -118.4148                  9   ...    2PT Field Goal   
+
+          shot_zone_area  shot_zone_basic  shot_zone_range     team_id  \
+0           Left Side(L)        Mid-Range         8-16 ft.  1610612747   
+1   Left Side Center(LC)        Mid-Range        16-24 ft.  1610612747   
+2  Right Side Center(RC)        Mid-Range        16-24 ft.  1610612747   
+3              Center(C)  Restricted Area  Less Than 8 ft.  1610612747   
+4           Left Side(L)        Mid-Range         8-16 ft.  1610612747   
+
+            team_name   game_date    matchup opponent shot_id  
+0  Los Angeles Lakers  10/31/2000  LAL @ POR      POR       2  
+1  Los Angeles Lakers  10/31/2000  LAL @ POR      POR       3  
+2  Los Angeles Lakers  10/31/2000  LAL @ POR      POR       4  
+3  Los Angeles Lakers  10/31/2000  LAL @ POR      POR       5  
+4  Los Angeles Lakers  10/31/2000  LAL @ POR      POR       6  
+
+[5 rows x 26 columns]
+
+. . .
+
+
+
+In [8]:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+os.getcwd()
+
+
+
+
+
+
+Out[8]:
+
+'C:\\Users\\GTX8WNS'
+. . .
+
+
+
+In [36]:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+#DATA UNDERSTANDING : 2.Describe the meaning and type of data (scale, values, etc.) for each#attribute in the data file.df.columnsdf.indexdf.valuesdf.dtypesdf.describe
+
+
+
+
+
+
+Out[36]:
+
+action_type            object
+combined_shot_type     object
+type                    int64
+game_event_id           int64
+game_id                 int64
+lat                   float64
+loc_x                   int64
+loc_y                   int64
+lon                   float64
+minutes_remaining       int64
+period                  int64
+playoffs                int64
+season                 object
+seconds_remaining       int64
+shot_distance           int64
+shot_made_flag          int64
+shot_type              object
+shot_zone_area         object
+shot_zone_basic        object
+shot_zone_range        object
+team_id                 int64
+team_name              object
+game_date              object
+matchup                object
+opponent               object
+shot_id                 int64
+dtype: object
+. . .
+
+
+
+In [37]:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+df.count()​
+
+
+
+
+
+
+Out[37]:
+
+action_type           25696
+combined_shot_type    25696
+type                  25696
+game_event_id         25696
+game_id               25696
+lat                   25696
+loc_x                 25696
+loc_y                 25696
+lon                   25696
+minutes_remaining     25696
+period                25696
+playoffs              25696
+season                25696
+seconds_remaining     25696
+shot_distance         25696
+shot_made_flag        25696
+shot_type             25696
+shot_zone_area        25696
+shot_zone_basic       25696
+shot_zone_range       25696
+team_id               25696
+team_name             25696
+game_date             25696
+matchup               25696
+opponent              25696
+shot_id               25696
+dtype: int64
+. . .
+
+
+
+In [86]:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+# DATA UNDERSTANDING: #3. Verify data quality: Explain any missing values, duplicate data, and outliers.# Are those mistakes? How do you deal with these problems? Be specific.​# The following command will indicate those cells with "True" where there is a missing valuepd.isnull(df).head(3)​# There is a simple way to check the number of missing values per variable, using the functiondf.isnull().sum()​# The inverse is also possible, that is counting the number of nonmissing values.df.count()​# To remove the Ouliers for each of your dataframe column, you could get quantile and then filterq = df["minutes_remaining"].quantile(0.99)df[df["minutes_remaining"] < q]
+
+
+
+
+
+
+Out[86]:
+
+
+.dataframe thead tr:only-child th { text-align: right; } .dataframe thead th { 
+text-align: left; } .dataframe tbody tr th { vertical-align: top; }  
+
+
+    action_type
+
+    combined_shot_type
+
+    type
+
+    game_event_id
+
+    game_id
+
+    lat
+
+    loc_x
+
+    loc_y
+
+    lon
+
+    minutes_remaining
+
+    ...
+
+    shot_type
+
+    shot_zone_area
+
+    shot_zone_basic
+
+    shot_zone_range
+
+    team_id
+
+    team_name
+
+    game_date
+
+    matchup
+
+    opponent
+
+    shot_id
+
+
+
+    0
+      Jump ShotJump Shot1122000001234.0443-1570-118.426810...2PT Field GoalLeft 
+      Side(L)Mid-Range8-16 ft.1610612747Los Angeles Lakers10/31/2000LAL @ 
+PORPOR2
+
+    1
+      Jump ShotJump Shot1352000001233.9093-101135-118.37087...2PT Field GoalLeft 
+      Side Center(LC)Mid-Range16-24 ft.1610612747Los Angeles Lakers10/31/2000LAL 
+      @ PORPOR3
+
+    2
+      Jump ShotJump Shot1432000001233.8693138175-118.13186...2PT Field GoalRight 
+      Side Center(RC)Mid-Range16-24 ft.1610612747Los Angeles Lakers10/31/2000LAL 
+      @ PORPOR4
+
+    3
+      Driving Dunk ShotDunk31552000001234.044300-118.26986...2PT Field 
+      GoalCenter(C)Restricted AreaLess Than 8 ft.1610612747Los Angeles 
+      Lakers10/31/2000LAL @ PORPOR5
+
+    4
+      Jump ShotJump Shot12442000001234.0553-145-11-118.41489...2PT Field 
+      GoalLeft Side(L)Mid-Range8-16 ft.1610612747Los Angeles Lakers10/31/2000LAL 
+      @ PORPOR6
+
+    5
+      Layup ShotLayup22512000001234.044300-118.26988...2PT Field 
+      GoalCenter(C)Restricted AreaLess Than 8 ft.1610612747Los Angeles 
+      Lakers10/31/2000LAL @ PORPOR7
+
+    6
+      Jump ShotJump Shot12652000001233.9363-65108-118.33486...2PT Field GoalLeft 
+      Side(L)In The Paint (Non-RA)8-16 ft.1610612747Los Angeles 
+      Lakers10/31/2000LAL @ PORPOR9
+
+    7
+      Running Jump ShotJump Shot12942000001233.9193-33125-118.30283...2PT Field 
+      GoalCenter(C)In The Paint (Non-RA)8-16 ft.1610612747Los Angeles 
+      Lakers10/31/2000LAL @ PORPOR10
+
+    8
+      Jump ShotJump Shot13092000001233.8063-94238-118.36381...3PT Field GoalLeft 
+      Side Center(LC)Above the Break 324+ ft.1610612747Los Angeles 
+      Lakers10/31/2000LAL @ PORPOR11
+
+    10
+      Running Jump ShotJump Shot1272000001933.9343-67110-118.33687...2PT Field 
+      GoalLeft Side(L)In The Paint (Non-RA)8-16 ft.1610612747Los Angeles 
+      Lakers11/1/2000LAL vs. UTAUTA13
+
+    11
+      Jump ShotJump Shot1662000001934.0403-944-118.36382...2PT Field GoalLeft 
+      Side(L)Mid-Range8-16 ft.1610612747Los Angeles Lakers11/1/2000LAL vs. 
+      UTAUTA14
+
+    12
+      Jump ShotJump Shot1802000001933.9973-2347-118.29281...2PT Field 
+      GoalCenter(C)In The Paint (Non-RA)Less Than 8 ft.1610612747Los Angeles 
+      Lakers11/1/2000LAL vs. UTAUTA15
+
+    13
+      Jump ShotJump Shot1862000001933.852362192-118.20780...2PT Field 
+      GoalCenter(C)Mid-Range16-24 ft.1610612747Los Angeles Lakers11/1/2000LAL 
+      vs. UTAUTA16
+
+    14
+      Jump ShotJump Shot11382000001933.8183-117226-118.38688...3PT Field 
+      GoalLeft Side Center(LC)Above the Break 324+ ft.1610612747Los Angeles 
+      Lakers11/1/2000LAL vs. UTAUTA18
+
+    16
+      Jump ShotJump Shot12552000001933.90033144-118.266810...2PT Field 
+      GoalCenter(C)Mid-Range8-16 ft.1610612747Los Angeles Lakers11/1/2000LAL vs. 
+      UTAUTA21
+
+    17
+      Jump ShotJump Shot12652000001933.9173134127-118.13589...2PT Field 
+      GoalRight Side Center(RC)Mid-Range16-24 ft.1610612747Los Angeles 
+      Lakers11/1/2000LAL vs. UTAUTA22
+
+    18
+      Running Jump ShotJump Shot12742000001933.9343-16110-118.28587...2PT Field 
+      GoalCenter(C)In The Paint (Non-RA)8-16 ft.1610612747Los Angeles 
+      Lakers11/1/2000LAL vs. UTAUTA23
+
+    19
+      Running Jump ShotJump Shot12992000001933.8943-109150-118.37885...2PT Field 
+      GoalLeft Side Center(LC)Mid-Range16-24 ft.1610612747Los Angeles 
+      Lakers11/1/2000LAL vs. UTAUTA24
+
+    20
+      Running Jump ShotJump Shot13072000001933.9813-4663-118.31585...2PT Field 
+      GoalCenter(C)In The Paint (Non-RA)Less Than 8 ft.1610612747Los Angeles 
+      Lakers11/1/2000LAL vs. UTAUTA25
+
+    21
+      Layup ShotLayup23322000001934.044300-118.26982...2PT Field 
+      GoalCenter(C)Restricted AreaLess Than 8 ft.1610612747Los Angeles 
+      Lakers11/1/2000LAL vs. UTAUTA26
+
+    22
+      Jump ShotJump Shot13452000001933.8483-58196-118.32782...2PT Field 
+      GoalCenter(C)Mid-Range16-24 ft.1610612747Los Angeles Lakers11/1/2000LAL 
+      vs. UTAUTA27
+
+    23
+      Jump ShotJump Shot13692000001933.8583-183186-118.45280...3PT Field 
+      GoalLeft Side Center(LC)Above the Break 324+ ft.1610612747Los Angeles 
+      Lakers11/1/2000LAL vs. UTAUTA28
+
+    24
+      Jump ShotJump Shot14002000001933.871385173-118.18488...2PT Field GoalRight 
+      Side Center(RC)Mid-Range16-24 ft.1610612747Los Angeles Lakers11/1/2000LAL 
+      vs. UTAUTA29
+
+    25
+      Jump ShotJump Shot14292000001933.9573387-118.26686...2PT Field 
+      GoalCenter(C)In The Paint (Non-RA)8-16 ft.1610612747Los Angeles 
+      Lakers11/1/2000LAL vs. UTAUTA30
+
+    26
+      Running Jump ShotJump Shot14882000001934.04031214-118.14881...2PT Field 
+      GoalRight Side(R)Mid-Range8-16 ft.1610612747Los Angeles Lakers11/1/2000LAL 
+      vs. UTAUTA31
+
+    27
+      Jump ShotJump Shot14992000001934.010312734-118.14280...2PT Field GoalRight 
+      Side(R)Mid-Range8-16 ft.1610612747Los Angeles Lakers11/1/2000LAL vs. 
+      UTAUTA32
+
+    28
+      Jump ShotJump Shot11842000004733.860391184-118.17883...2PT Field GoalRight 
+      Side Center(RC)Mid-Range16-24 ft.1610612747Los Angeles Lakers11/4/2000LAL 
+      @ VANVAN39
+
+    29
+      Jump ShotJump Shot12022000004733.7723-27272-118.29680...3PT Field 
+      GoalCenter(C)Above the Break 324+ ft.1610612747Los Angeles 
+      Lakers11/4/2000LAL @ VANVAN40
+
+    31
+      Layup ShotLayup22192000004734.040374-118.262810...2PT Field 
+      GoalCenter(C)Restricted AreaLess Than 8 ft.1610612747Los Angeles 
+      Lakers11/4/2000LAL @ VANVAN42
+
+    32
+      Jump ShotJump Shot12292000004733.9113150133-118.11988...2PT Field 
+      GoalRight Side Center(RC)Mid-Range16-24 ft.1610612747Los Angeles 
+      Lakers11/4/2000LAL @ VANVAN43
+
+    ...
+      ...............................................................
+
+    25665
+      Layup ShotLayup22384990008734.0263-1418-118.283810...2PT Field 
+      GoalCenter(C)Restricted AreaLess Than 8 ft.1610612747Los Angeles 
+      Lakers6/16/2000LAL @ INDIND30661
+
+    25666
+      Slam Dunk ShotDunk32454990008734.044300-118.26989...2PT Field 
+      GoalCenter(C)Restricted AreaLess Than 8 ft.1610612747Los Angeles 
+      Lakers6/16/2000LAL @ INDIND30662
+
+    25667
+      Jump ShotJump Shot12594990008733.9913-853-118.27788...2PT Field 
+      GoalCenter(C)In The Paint (Non-RA)Less Than 8 ft.1610612747Los Angeles 
+      Lakers6/16/2000LAL @ INDIND30663
+
+    25668
+      Jump ShotJump Shot12704990008734.019310625-118.16386...2PT Field GoalRight 
+      Side(R)Mid-Range8-16 ft.1610612747Los Angeles Lakers6/16/2000LAL @ 
+      INDIND30664
+
+    25669
+      Layup ShotLayup22804990008734.0263-1418-118.28385...2PT Field 
+      GoalCenter(C)Restricted AreaLess Than 8 ft.1610612747Los Angeles 
+      Lakers6/16/2000LAL @ INDIND30666
+
+    25670
+      Jump ShotJump Shot12954990008733.8733-81171-118.35084...2PT Field GoalLeft 
+      Side Center(LC)Mid-Range16-24 ft.1610612747Los Angeles Lakers6/16/2000LAL 
+      @ INDIND30667
+
+    25671
+      Jump ShotJump Shot13684990008733.794340250-118.22989...3PT Field 
+      GoalCenter(C)Above the Break 324+ ft.1610612747Los Angeles 
+      Lakers6/16/2000LAL @ INDIND30668
+
+    25672
+      Jump ShotJump Shot14254990008733.991317153-118.09883...2PT Field GoalRight 
+      Side(R)Mid-Range16-24 ft.1610612747Los Angeles Lakers6/16/2000LAL @ 
+      INDIND30670
+
+    25673
+      Running Jump ShotJump Shot1154990008834.0283-7416-118.34389...2PT Field 
+      GoalCenter(C)In The Paint (Non-RA)Less Than 8 ft.1610612747Los Angeles 
+      Lakers6/19/2000LAL vs. INDIND30671
+
+    25674
+      Driving Layup ShotLayup2254990008834.044300-118.26988...2PT Field 
+      GoalCenter(C)Restricted AreaLess Than 8 ft.1610612747Los Angeles 
+      Lakers6/19/2000LAL vs. INDIND30672
+
+    25675
+      Jump ShotJump Shot1294990008833.98938955-118.18088...2PT Field GoalRight 
+      Side(R)Mid-Range8-16 ft.1610612747Los Angeles Lakers6/19/2000LAL vs. 
+      INDIND30673
+
+    25676
+      Jump ShotJump Shot1364990008834.04431170-118.15287...2PT Field GoalRight 
+      Side(R)Mid-Range8-16 ft.1610612747Los Angeles Lakers6/19/2000LAL vs. 
+      INDIND30674
+
+    25677
+      Jump ShotJump Shot1814990008833.8283117216-118.15282...3PT Field GoalRight 
+      Side Center(RC)Above the Break 324+ ft.1610612747Los Angeles 
+      Lakers6/19/2000LAL vs. INDIND30675
+
+    25678
+      Jump ShotJump Shot1844990008833.8283-134216-118.40382...3PT Field GoalLeft 
+      Side Center(LC)Above the Break 324+ ft.1610612747Los Angeles 
+      Lakers6/19/2000LAL vs. INDIND30676
+
+    25679
+      Running Jump ShotJump Shot1984990008834.0443-1410-118.41080...2PT Field 
+      GoalLeft Side(L)Mid-Range8-16 ft.1610612747Los Angeles Lakers6/19/2000LAL 
+      vs. INDIND30677
+
+    25680
+      Jump ShotJump Shot11014990008833.9013-113143-118.38280...2PT Field 
+      GoalLeft Side Center(LC)Mid-Range16-24 ft.1610612747Los Angeles 
+      Lakers6/19/2000LAL vs. INDIND30678
+
+    25681
+      Driving Layup ShotLayup21814990008834.02831416-118.25583...2PT Field 
+      GoalCenter(C)Restricted AreaLess Than 8 ft.1610612747Los Angeles 
+      Lakers6/19/2000LAL vs. INDIND30679
+
+    25682
+      Layup ShotLayup22124990008834.044300-118.26980...2PT Field 
+      GoalCenter(C)Restricted AreaLess Than 8 ft.1610612747Los Angeles 
+      Lakers6/19/2000LAL vs. INDIND30680
+
+    25683
+      Jump ShotJump Shot12184990008833.7833-18261-118.28780...3PT Field 
+      GoalCenter(C)Above the Break 324+ ft.1610612747Los Angeles 
+      Lakers6/19/2000LAL vs. INDIND30682
+
+    25684
+      Jump ShotJump Shot12284990008833.82831216-118.268810...2PT Field 
+      GoalCenter(C)Mid-Range16-24 ft.1610612747Los Angeles Lakers6/19/2000LAL 
+      vs. INDIND30684
+
+    25685
+      Jump ShotJump Shot12314990008833.9553-9689-118.365810...2PT Field GoalLeft 
+      Side(L)Mid-Range8-16 ft.1610612747Los Angeles Lakers6/19/2000LAL vs. 
+      INDIND30685
+
+    25686
+      Jump ShotJump Shot12494990008833.794381250-118.18887...3PT Field 
+      GoalCenter(C)Above the Break 324+ ft.1610612747Los Angeles 
+      Lakers6/19/2000LAL vs. INDIND30686
+
+    25687
+      Jump ShotJump Shot12844990008833.944340100-118.22983...2PT Field 
+      GoalCenter(C)In The Paint (Non-RA)8-16 ft.1610612747Los Angeles 
+      Lakers6/19/2000LAL vs. INDIND30688
+
+    25688
+      Jump ShotJump Shot13084990008833.9833-12661-118.39581...2PT Field GoalLeft 
+      Side(L)Mid-Range8-16 ft.1610612747Los Angeles Lakers6/19/2000LAL vs. 
+      INDIND30689
+
+    25689
+      Jump ShotJump Shot13264990008833.3653-12679-118.28180...3PT Field GoalBack 
+      Court(BC)BackcourtBack Court Shot1610612747Los Angeles Lakers6/19/2000LAL 
+      vs. INDIND30690
+
+    25691
+      Driving Layup ShotLayup23824990008834.044300-118.26987...2PT Field 
+      GoalCenter(C)Restricted AreaLess Than 8 ft.1610612747Los Angeles 
+      Lakers6/19/2000LAL vs. INDIND30692
+
+    25692
+      Jump ShotJump Shot13974990008833.9963148-118.26886...2PT Field 
+      GoalCenter(C)In The Paint (Non-RA)Less Than 8 ft.1610612747Los Angeles 
+      Lakers6/19/2000LAL vs. INDIND30693
+
+    25693
+      Running Jump ShotJump Shot14264990008833.8783-134166-118.40383...2PT Field 
+      GoalLeft Side Center(LC)Mid-Range16-24 ft.1610612747Los Angeles 
+      Lakers6/19/2000LAL vs. INDIND30695
+
+    25694
+      Jump ShotJump Shot14484990008833.777331267-118.23882...3PT Field 
+      GoalCenter(C)Above the Break 324+ ft.1610612747Los Angeles 
+      Lakers6/19/2000LAL vs. INDIND30696
+
+    25695
+      Jump ShotJump Shot14714990008833.9723172-118.26880...2PT Field 
+      GoalCenter(C)In The Paint (Non-RA)Less Than 8 ft.1610612747Los Angeles 
+      Lakers6/19/2000LAL vs. INDIND30697
+
+24154 rows × 26 columns
+
+. . .
+
+
+
+In [105]:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+# DATA UNDERSTANDING: #4 Give simple, appropriate statistics (range, mode, mean, median, variance,# counts, etc.) for the most important attributes and describe what they mean or if you# found something interesting. Note: You can also use data from other sources for# comparison. Explain the significance of the statistics run and why they are meaningful.​df.describe(include='all')​​
+
+
+
+
+
+
+Out[105]:
+
+
+.dataframe thead tr:only-child th { text-align: right; } .dataframe thead th { 
+text-align: left; } .dataframe tbody tr th { vertical-align: top; }  
+
+
+    action_type
+
+    combined_shot_type
+
+    type
+
+    game_event_id
+
+    game_id
+
+    lat
+
+    loc_x
+
+    loc_y
+
+    lon
+
+    minutes_remaining
+
+    ...
+
+    shot_type
+
+    shot_zone_area
+
+    shot_zone_basic
+
+    shot_zone_range
+
+    team_id
+
+    team_name
+
+    game_date
+
+    matchup
+
+    opponent
+
+    shot_id
+
+
+
+    count
+      256962569625696.00000025696.0000002.569600e+0425696.00000025696.00000025696.00000025696.00000025696.000000...256962569625696256962.569600e+042569625696256962569625696.000000
+
+    unique
+      556NaNNaNNaNNaNNaNNaNNaNNaN...2675NaN115587433NaN
+
+    top
+      Jump ShotJump ShotNaNNaNNaNNaNNaNNaNNaNNaN...2PT Field 
+      GoalCenter(C)Mid-RangeLess Than 8 ft.NaNLos Angeles Lakers4/13/2016LAL @ 
+      SASSASNaN
+
+    freq
+      1583619710NaNNaNNaNNaNNaNNaNNaNNaN...2028411288105327856NaN25696438531638NaN
+
+    mean
+      NaNNaN1.321879249.3570592.474128e+0733.9530397.14870091.260897-118.2626514.886714...NaNNaNNaNNaN1.610613e+09NaNNaNNaNNaN15328.757900
+
+    std
+      NaNNaN0.711421149.7754097.738202e+060.088152110.07527988.1519830.1100753.452517...NaNNaNNaNNaN0.000000e+00NaNNaNNaNNaN8860.128375
+
+    min
+      NaNNaN1.0000002.0000002.000001e+0733.253300-250.000000-44.000000-118.5198000.000000...NaNNaNNaNNaN1.610613e+09NaNNaNNaNNaN2.000000
+
+    25%
+      NaNNaN1.000000111.0000002.050006e+0733.884300-67.2500004.000000-118.3370502.000000...NaNNaNNaNNaN1.610613e+09NaNNaNNaNNaN7646.750000
+
+    50%
+      NaNNaN1.000000253.0000002.090034e+0733.9703000.00000074.000000-118.2698005.000000...NaNNaNNaNNaN1.610613e+09NaNNaNNaNNaN15336.500000
+
+    75%
+      NaNNaN1.000000367.0000002.960027e+0734.04030094.000000160.000000-118.1758008.000000...NaNNaNNaNNaN1.610613e+09NaNNaNNaNNaN22976.250000
+
+    max
+      NaNNaN6.000000653.0000004.990009e+0734.088300248.000000791.000000-118.02180011.000000...NaNNaNNaNNaN1.610613e+09NaNNaNNaNNaN30697.000000
+
+11 rows × 26 columns
+
+. . .
+
+
+
+In [ ]:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+# DATA UNDERSTANDING: #5 Visualize the most important attributes appropriately (at least 5 attributes).#Important: Provide an interpretation for each chart. Explain for each attribute why the#chosen visualization is appropriate.
+
+
+
+
+
+. . .
+
+
+
+In [ ]:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+​​
+
+
+
+
+
+. . .
+
+
+
+In [ ]:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+​
+
+
+
+
+
+. . .
+
+
+
+
+Close
+
+Expand
+
+Open in Pager
+
+Close
+
+
+
+
+
+
+
+
+
+sys_info = {"os_name": "nt", "platform": "Windows-7-6.1.7601-SP1", 
+"default_encoding": "cp437", "notebook_path": 
+"C:\\Users\\GTX8WNS\\AppData\\Local\\Continuum\\anaconda2\\lib\\site-packages\\notebook",0
+"sys_platform": "win32", "sys_version": "2.7.14 |Anaconda, Inc.| (default, Oct 
+15 2017, 03:34:40) [MSC v.1500 64 bit (AMD64)]", "notebook_version": "5.0.0", 
+"commit_source": "", "commit_hash": "", "sys_executable": 
+"C:\\Users\\GTX8WNS\\AppData\\Local\\Continuum\\anaconda2\\python.exe"};    f
+unction _remove_token_from_url() { if (window.location.search.length <= 1) { 
+return; } var search_parameters = window.location.search.slice(1).split('&'); 
+for (var i = 0; i < search_parameters.length; i++) { if 
+(search_parameters[i].split('=')[0] === 'token') { // remote token from search 
+parameters search_parameters.splice(i, 1); var new_search = ''; if 
+(search_parameters.length) { new_search = '?' + search_parameters.join('&'); } 
+var new_url = window.location.origin + window.location.pathname + new_search + 
+window.location.hash; window.history.replaceState({}, "", new_url); return; } } 
+} _remove_token_from_url();  
+
